@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>在移动端开发 必须要搞清楚`viewport`</title>
+      <link href="/2020/08/13/viewport-chang-jian-she-zhi-you-na-xie/"/>
+      <url>/2020/08/13/viewport-chang-jian-she-zhi-you-na-xie/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>在移动端开发 必须要搞清楚<code>viewport</code><br><code>viewport</code> 就是视区窗口 也就是浏览器中显示网页的部分 PC端上基本等于设备显示区域 但在移动端上<code>viewport</code> 会超出设备的显示区域（会有横向滚动条出现）<br>设备默认的viewport在980-1024之间<br>为了让移动端可以很好的显示页面 因此需要对 <code>viewport</code> 进行设置</p></blockquote><table><thead><tr><th>设置</th><th>解释</th></tr></thead><tbody><tr><td>width</td><td>设置 layout viewport 的宽度，为一个正整数，或字符串”device-width”</td></tr><tr><td>initial-scale</td><td>设置页面的初始缩放值，为一个数字，可以带小数</td></tr><tr><td>minimum-scale</td><td>允许用户的最小缩放值，为一个数字，可以带小数</td></tr><tr><td>maximum-scale</td><td>允许用户的最大缩放值，为一个数字，可以带小数</td></tr><tr><td>height</td><td>设置 layout viewport 的高度，这个属性对我们并不重要，很少使用</td></tr><tr><td>user-scalable</td><td>是否允许用户进行缩放，值为”no”或”yes”， no 代表不允许，yes 代表允许</td></tr></tbody></table><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- viewport是在meta标签内进行控制 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span></span></span><br><span class="line"><span class="tag">  <span class="attr">name</span>=<span class="string">"viewport"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1 minimum-scale=1 user-scalable=no"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br></pre></td></tr></tbody></table></figure><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>label都有哪些作用</title>
+      <link href="/2020/08/13/label-du-you-na-xie-zuo-yong-ju-li-shuo-ming/"/>
+      <url>/2020/08/13/label-du-you-na-xie-zuo-yong-ju-li-shuo-ming/</url>
+      
+        <content type="html"><![CDATA[<h2 id="lt-label-gt-的作用"><a href="#lt-label-gt-的作用" class="headerlink" title="<label> 的作用"></a><code>&lt;label&gt;</code> 的作用</h2><p>表示用户界面中某个元素的说明<br>增加命中区域 屏幕阅读器可以读出标签 使用辅助技术的用户更容易理解输入哪些数据</p><h2 id="常用用法"><a href="#常用用法" class="headerlink" title="常用用法"></a>常用用法</h2><p>单击关联标签激活input 需给input一个id属性 给label一个 for属性 设为同一个值</p><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"click"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"click"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>一个input 可以与多个label相关联<br>label本身并不与表单直接相关 他们只管通过与他们相关联的控件间接的与表单相关联<br>当点击或触碰 一个表单控件相关联的label时 关联的控件的click事件也会触发</p><h2 id="具体用例"><a href="#具体用例" class="headerlink" title="具体用例"></a>具体用例</h2><p>1.利用label模拟button 以解决不同浏览器原生button样式不同的问题</p><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"btn"</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">'button'</span>]</span> {</span></span><br><span class="line">  display: none;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">label {</span><br><span class="line">  display: inline-block;</span><br><span class="line">  padding: 10px 20px;</span><br><span class="line"><span class="css">  <span class="selector-tag">background</span>: <span class="selector-id">#456</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">color</span>: <span class="selector-id">#fff</span>;</span></span><br><span class="line">  cursor: pointer;</span><br><span class="line"><span class="css">  <span class="selector-tag">box-shadow</span>: 2<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> 4<span class="selector-tag">px</span> 0 <span class="selector-tag">rgba</span>(0,0,0,<span class="selector-class">.3</span>);</span></span><br><span class="line">  border-radius: 2px;</span><br><span class="line">}</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>a标签target属性值与作用</title>
+      <link href="/2020/08/13/chao-lian-jie-target-shu-xing-zhi-he-zuo-yong/"/>
+      <url>/2020/08/13/chao-lian-jie-target-shu-xing-zhi-he-zuo-yong/</url>
+      
+        <content type="html"><![CDATA[<h3 id="a标签-超链接-target-属性值-和-其作用"><a href="#a标签-超链接-target-属性值-和-其作用" class="headerlink" title="a标签 超链接 target 属性值 和 其作用"></a>a标签 超链接 target 属性值 和 其作用</h3><p><code>_blank</code> 在新窗口总打开被链接文档<br><code>_self</code> 默认值.在当前窗口或框架中加载目标文档<br><code>_parent</code> 在夫框架集中打开被链接文档 当a标签本身在顶层时 则与<code>_self</code>相同<br><code>_top</code> 在整个窗口中打开被链接文档<br><code>framename</code> 在指定框架中打开被链接文档<br><code>任意字符</code> 若该标签不是已打开的页面 则在新窗口中打开 与<code>_blank</code>一致 若 该链接已经打开 则跳转到该标签页并刷新页面</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HTML离线存储</title>
+      <link href="/2020/08/13/html-chi-xian-cun-chu/"/>
+      <url>/2020/08/13/html-chi-xian-cun-chu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="离线存储"><a href="#离线存储" class="headerlink" title="离线存储"></a>离线存储</h1><h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><blockquote><p> <code>sessionStorage</code> 允许你访问一个 对应当前源得session <code>Storage</code>对象 它与localStorage相似 不同之处在于<code>localStorage</code> 里面 存储的数据没有过期时间设置 而存储在<code>sessionStorage</code> 里面的数据在页面会话结束时会被清除</p></blockquote><ul><li>页面会话在浏览器打开期间一直保持 并重新加载或恢复页面仍然保持原来的页面会话</li><li>在新标签或新窗口打开的一个页面会复制顶级浏览会话的上下文作为新会话的上下文 这点和 session cookies 运行方式不同</li><li>打开多个相同的URL的Tabs页面 会创建各自的<code>sessionStorage</code></li><li>关闭对应浏览器tab 会清除对应的<code>sessionStorage</code><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保存数据到 sessionStorage</span></span><br><span class="line">sessionStorage.setItem(<span class="string">'key'</span>,value)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从 sessionStorage 获取数据</span></span><br><span class="line">sessionStorage.getItem(<span class="string">'key'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从 sessionStorage 删除保存的数据</span></span><br><span class="line">sessionStorage.removeItem(<span class="string">'key'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从 sessionStorage 删除所有保存的数据</span></span><br><span class="line">sessionStorage.clear()</span><br></pre></td></tr></tbody></table></figure><h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><blockquote><p>只读的<code>localStorage</code>属性允许你访问一个Document源（origin）的对象Storage;存储的数据将保存在浏览器会话中 <code>localStorage</code>类似<code>sessionStorage</code>,但其区别在于：存储在<code>localStorage</code>的数据可以长期保留;而当页面会话结束 也就是页面关闭时 存储在<code>sessionStorage</code>内的数据就会被清除<br>应注意 无论数据存储在<code>localStorage</code>还是<code>sessionStorage</code> 他们都特定于页面的协议<br>另外,<code>localStorage</code>中的键值对总是以字符串的形式存储 （和js对象相比 键值对总是以字符串的形式存储意味着数值类型会自动转化为字符串类型）</p></blockquote><h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保存数据到 localStorage</span></span><br><span class="line"><span class="built_in">localStorage</span>.setItem(<span class="string">'key'</span>,<span class="string">'value'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从 localStorage 获取数据</span></span><br><span class="line"><span class="built_in">localStorage</span>.getItem(<span class="string">'key'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从 localStorage 删除所保存的数据</span></span><br><span class="line"><span class="built_in">localStorage</span>.removeItem(<span class="string">'key'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从 localStorage 删除所有保存的数据</span></span><br><span class="line"><span class="built_in">localStorage</span>.clear()</span><br></pre></td></tr></tbody></table></figure><h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><blockquote><p>获取并设置与当前文档相关联的cookie 建议使用一个通用的库 来操作 cookie<br>例如 js-cookie(<a href="https://www.npmjs.com/package/js-cookie">https://www.npmjs.com/package/js-cookie</a>)</p></blockquote></li></ul><p>webSql  </p><h3 id="indexDB"><a href="#indexDB" class="headerlink" title="indexDB"></a>indexDB</h3><blockquote><p>IndexDB是一种底层API,用于客户端存储大量结构化数据（文件/二进制大型对象（blobs））该API使用索引来实现对数据得高性能搜索 虽然web Storage 对于存储较少量数据很有用 但是对于存储更大量的结构化数据来说 这种方法不太好用 所以IndexDB提供了一种解决方案   </p></blockquote><h5 id="详细使用方法"><a href="#详细使用方法" class="headerlink" title="详细使用方法"></a>详细使用方法</h5><p>(<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API">https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API</a>)</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>html元素 常用 与 H5</title>
+      <link href="/2020/08/13/html-yuan-su/"/>
+      <url>/2020/08/13/html-yuan-su/</url>
+      
+        <content type="html"><![CDATA[<h2 id="常用的行内元素"><a href="#常用的行内元素" class="headerlink" title="常用的行内元素"></a>常用的行内元素</h2><p>b 粗体 用于摘要中的关键字<br>img 嵌入多媒体 插入图片 空元素 单标签<br>br 换行 单标签 空元素<br>script 嵌入可执行脚本 双标签<br>span 行内容器 无语义<br>button 按钮 双标签<br>input 输入框 空元素<br>label 表示说明 搭配表单元素使用 不可再label放可交互元素和标题<br>select 下拉菜单 搭配表单元素使用<br>textarea 多行文本编辑器 搭配表单元素使用 支持部分input属性<br>strong 粗体 表示文本十分重要</p><h2 id="常用的块级元素"><a href="#常用的块级元素" class="headerlink" title="常用的块级元素"></a>常用的块级元素</h2><p>div 块级容器 无语义 支持所有全局属性 不适用css对布局无任何影响<br>hr 分割线 空元素 适用css修饰<br>ul 无序列表 配合li使用<br>table 表格 配合 thead tbody th tr td<br>section 区段 表示html文档中的独立部分 比如搜索结果列表 地图显示 等<br>form 表单 包含交互控件 用于向web服务器提交信息<br>p 行 表示整块文本 与相邻文本分离<br>h1-h6 标题 h1级别最高 h6最低</p><p>标题要点:<br>  不要为了减少标题字体大小使用低级别标题 而是使用css font-size属性<br>  使用section时 应当每个都使用同一个级别标题</p><h2 id="h5-新增"><a href="#h5-新增" class="headerlink" title="h5 新增"></a>h5 新增</h2><p>新的区块与段落元素<br>  section 区段 表示html文档中的独立部分 比如搜索结果列表 地图显示 等<br>  article 表示在文档 页面 应用或网站中独立结构 可复用的结构<br>  nav 提供导航 通常用于 菜单 目录 索引<br>  header 用于文章或页面 的header 内放置logo 标题 或者 nav<br>  footer 用于文章或页面 的footer 包含版权信息 联系方式等<br>  aside 与文章或页面无关的部分 可以单独拆分不影响文章与页面的显示 用于侧边栏或标注框<br>  main 内容主体部分 一般用于 header footer中间 用于展示主要的内容<br>  figure 独立内容 与 figcaption 配合使用 用于 主文中引入图片 表格 代码段等<br>  figcaption 与其相关的 图片的说明/标题 用于描述figure里的数据<br>音频视频<br>  audio 在文档中嵌入音频<br>  video 在文档中嵌入视频并 提供播放界面<br>脚本<br>  template 储存一段html代码 视为模板 可在后续操作中插入视图中<br>文字形式<br>  mark 高亮文本 突出显示 用于 搜索引擎搜索后的关键词高亮显示<br>嵌入内容<br>  embed<br>  source 为picture audio video 指定多个媒体资源 空元素<br>  track 为audio和 video 指定字幕 空元素<br>  canvas 代表画布 通过JavaScript 绘制图形和动画<br>  svg 定义一个嵌入矢量图<br>表单<br>  datalist 包含一组元素 这些元素表示了其他表单控件的可选值<br>  progress 表示一个进度条<br>交互元素<br>  details 展开状态时显示内含信息 类似折叠面板<br>  summary 为details提供 概要或标签</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2020/08/11/hello-world/"/>
+      <url>/2020/08/11/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HTML全局属性</title>
+      <link href="/2018/09/07/html-quan-ju-shu-xing/"/>
+      <url>/2018/09/07/html-quan-ju-shu-xing/</url>
+      
+        <content type="html"><![CDATA[<h1 id="全局属性"><a href="#全局属性" class="headerlink" title="全局属性"></a>全局属性</h1><h4 id="全局属性是所有HTML元素共有的属性-它们可以用于所有元素，即使属性可能对某些元素不起作用。"><a href="#全局属性是所有HTML元素共有的属性-它们可以用于所有元素，即使属性可能对某些元素不起作用。" class="headerlink" title="全局属性是所有HTML元素共有的属性; 它们可以用于所有元素，即使属性可能对某些元素不起作用。"></a>全局属性是所有HTML元素共有的属性; 它们可以用于所有元素，即使属性可能对某些元素不起作用。</h4><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p><code>accesskey</code> 提供给了为当前元素生成快捷键的方式</p><p><code>autocapitalize</code> 控制用户的文本输入是否自动大写</p><p><code>class</code> 以空格分隔的元素的类名的列表</p><p><code>contenteditable</code> 枚举属性 表示元素是否可被用户编辑</p><p><code>data-*</code> 自定义数据属性</p><p><code>dir</code> 枚举属性 指定元素中文本方向</p><p><code>draggable</code> 枚举属性 表示是否可以使用 Drag and Drop API 拖动元素</p><p><code>dropzone</code> 枚举属性 表示可以使用 Drag and Drop API 在元素上删除哪些类型的内容</p><p><code>hidden</code> 表示该元素尚未或不再相关 用于隐藏页面元素</p><p><code>id</code> 定义唯一标识 该标识在整个文档必须是唯一的</p><p><code>inputmode</code> 编辑此元素或其内容时要使用的虚拟键盘配置类型的提示</p><p><code>is</code> 允许您指定标准HTML元素应该像已注册的自定义内置元素一样</p><p><code>lang</code> 元素内容语言</p><p><code>speellcheck</code> 枚举属性 表示是否可以检查元素是否存在拼写错误</p><p><code>style</code> 内容包含要应用于元素的css样式声明</p><p><code>tabindex</code> 设置元素可以获得焦点 使用tab导航</p><p><code>title</code> 作为提示信息 </p><p><code>translate</code> 元素内容是否需要本地化</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Markdown </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Typora </tag>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
